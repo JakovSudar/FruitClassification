@@ -1,0 +1,10 @@
+flask
+flask_cors
+cv2
+os
+json
+numpy
+math
+PIL
+skimage
+uwsgi
