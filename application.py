@@ -18,13 +18,10 @@ CORS(application, support_credentials=True)
 def test():
     return "test uspjesan, aplikacija je objavljena i rest radi"
 
-@apapplicationp.route("/getFeatures/<string:url>")
+@application.route("/getFeatures/<string:url>")
 def getFeatures(url):    
-    directory = "newImage"
-    img = imutils.url_to_image(url)
-
-    cv2.imshow("img",img)
-    cv2.waitKey()
+    directory = "https://ruapfruitclassification.azurewebsites.net/images/"
+    img = imutils.url_to_image(directory+url)    
     dim = (100, 100)
     # resize image
     resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
@@ -42,7 +39,5 @@ def getFeatures(url):
     }   
     x= json.dumps(obj)    
     return x
-
-
 if __name__ == "__main__":
     application.run(debug=False)
