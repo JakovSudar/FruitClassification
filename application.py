@@ -40,4 +40,4 @@ def getFeatures(url):
     x= json.dumps(obj)    
     return x
 if __name__ == "__main__":
-    application.run(debug=False)
+    application.run()
