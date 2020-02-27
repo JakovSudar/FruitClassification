@@ -44,5 +44,5 @@ def getFeatures(url):
     print(result)
     return result
 
-if __name__ == "__main__":
-    app.run()
+
+app.run()
