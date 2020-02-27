@@ -40,9 +40,8 @@ def getFeatures(url):
         "Contrast" : result[6],
         "Homogenity": result[7]
     }   
-    x= json.dumps(obj)
-    print(result)
-    return result
+    x= json.dumps(obj)    
+    return x
 
 
 if __name__ == "__main__":
