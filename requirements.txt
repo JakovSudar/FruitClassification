@@ -1,7 +1,6 @@
 flask
 flask_cors
 opencv-python
-os
 json
 numpy
 math
