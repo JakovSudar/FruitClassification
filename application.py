@@ -7,18 +7,18 @@ from flask_cors import CORS
 from flask import Flask
 import imutils
 
-app = Flask(__name__)
-CORS(app, support_credentials=True)
+application = Flask(__name__)
+CORS(application, support_credentials=True)
 
 #Ova skripta se treba pozvat iz aplikacije kad korisnik unese sliku.
 #ta slika se treba spremit u folder newImage podbilokojim nazivom pa ce ju ova skripta obraditi
 #varijabla result sadrzi podatke slike i njih treba nekako vratiti u aplikaciju, preko json ili ih zapisati posebno u neku text datoteku
 #pa da web aplikacija procita to iz te datoteke
-@app.route("/test")
+@application.route("/test")
 def test():
     return "test uspjesan, aplikacija je objavljena i rest radi"
 
-@app.route("/getFeatures/<string:url>")
+@apapplicationp.route("/getFeatures/<string:url>")
 def getFeatures(url):    
     directory = "newImage"
     img = imutils.url_to_image(url)
@@ -45,4 +45,5 @@ def getFeatures(url):
     return result
 
 
-app.run()
+if __name__ == "__main__":
+    application.run(debug=False)
