@@ -5,7 +5,7 @@ import json
 from flask_cors import CORS
 from flask import Flask
 import imutils
-import urllib
+import urllib.request as urllib
 
 application = Flask(__name__)
 CORS(application, support_credentials=True)
@@ -42,7 +42,7 @@ def getFeatures(url):
                 "input1":
                 {
                     "ColumnNames": ["Class", "R-avg", "G-avg", "B-avg", "Shape", "Energy", "Correlation", "Contrast", "Homogenity"],
-                    "Values":  [ "-", result[0], result[1], result[2], result[3],result[4], result[5], result[6], result[7]]
+                     "Values": [ [ "value", result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7] ] ]
                 },        },
             "GlobalParameters": {
                     }
@@ -62,7 +62,6 @@ def getFeatures(url):
         return result
     except urllib.HTTPError as error:
         print("The request failed with status code: " + str(error.code))
-
         # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
         print(error.info())
         print(json.loads(error.read()))    
