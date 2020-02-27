@@ -2,7 +2,6 @@ flask
 flask_cors
 opencv-python
 numpy
-math
 PIL
 skimage
 uwsgi
