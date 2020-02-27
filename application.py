@@ -1,5 +1,4 @@
 import Image
-from termcolor import colored
 import cv2
 import os
 import json
