@@ -2,6 +2,7 @@ import Image
 import cv2
 import os
 import json
+import datetime
 from flask_cors import CORS
 from flask import Flask
 import imutils
@@ -19,7 +20,9 @@ def test():
     return "test uspjesan, aplikacija je objavljena i rest radi"
 
 @application.route("/getFeatures/<string:url>")
-def getFeatures(url):    
+def getFeatures(url):
+    currentDT = datetime.datetime.now()
+    print (str(currentDT) + " REQUEST ARRIVED\n")    
     directory = "https://ruapfruitclassification.azurewebsites.net/images/"
     img = imutils.url_to_image(directory+url)    
     dim = (100, 100)
@@ -51,6 +54,8 @@ def getFeatures(url):
     url = 'https://ussouthcentral.services.azureml.net/workspaces/3381f16d57184d1e9b30dea2f1e70257/services/84458a21acc641ab9a4c2c64bb732820/execute?api-version=2.0&details=true'
     api_key = 'SR2Adf4SDvnfAOEh1vNvgYUIj+/ZKWZlju/mKscwFK5qpUZl4ItU89jWEIZnvkou4tHhTdWc2AOwsL6xcdO7wQ==' # Replace this with the API key for the web service
     headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+    currentDT = datetime.datetime.now()
+    print (str(currentDT)+" SENDING REQUEST TO AZURE")
     req = urllib.Request(url, body, headers) 
     try:
         response = urllib.urlopen(req)
@@ -58,13 +63,13 @@ def getFeatures(url):
         # req = urllib.request.Request(url, body, headers) 
         # response = urllib.request.urlopen(req)
         result = response.read()
-        print(result) 
+        currentDT = datetime.datetime.now()
+        print (str(currentDT)+" RETURNING JSON TO CLIENT")
         return result
     except urllib.HTTPError as error:
         print("The request failed with status code: " + str(error.code))
         # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
-        print(error.info())
-        print(json.loads(error.read()))    
+        
 
         return "error"
 if __name__ == "__main__":
