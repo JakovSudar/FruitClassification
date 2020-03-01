@@ -51,8 +51,8 @@ def getFeatures(url):
                     }
     }
     body = str.encode(json.dumps(data))
-    url = 'https://ussouthcentral.services.azureml.net/workspaces/3381f16d57184d1e9b30dea2f1e70257/services/84458a21acc641ab9a4c2c64bb732820/execute?api-version=2.0&details=true'
-    api_key = 'SR2Adf4SDvnfAOEh1vNvgYUIj+/ZKWZlju/mKscwFK5qpUZl4ItU89jWEIZnvkou4tHhTdWc2AOwsL6xcdO7wQ==' # Replace this with the API key for the web service
+    url = 'https://ussouthcentral.services.azureml.net/workspaces/3381f16d57184d1e9b30dea2f1e70257/services/266c87bfb6a14e52aa3a66fbef7f5120/execute?api-version=2.0&details=true'
+    api_key = '5+3eMTkiQZSMZbHJ32ggqc09WwZx3iSzDBWt4ec/mbkp5jESGWvkpgQfc79qU9MZQXwJEafpV+rT1oZhU/9Dwg==' # Replace this with the API key for the web service
     headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
     currentDT = datetime.datetime.now()
     print (str(currentDT)+" SENDING REQUEST TO AZURE")
